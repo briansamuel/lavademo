@@ -24,7 +24,7 @@ Route::get('/about','NewsController@about');
 
 
 Auth::routes();
-
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/home', 'HomeController@index');
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/bai-viet', 'AdminController@listarticle');

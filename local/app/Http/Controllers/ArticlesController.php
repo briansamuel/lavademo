@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Articles;
 use Illuminate\Http\Request;
+use App\Http\Requests\CheckArticlesRequest;
 use App\Http\Controllers\Controller;
 class ArticlesController extends Controller
 {
@@ -35,7 +36,7 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CheckArticlesRequest $request)
     {
         $dulieu_tu_input = $request->all();
  
@@ -56,7 +57,7 @@ class ArticlesController extends Controller
  
         //Sau khi đã lưu xong, tiến hành chuyển hướng tới route articles
                 //hiển thị toàn bộ thông tin bảng articles trong database đã được tạo ở các bài trước
-        return redirect('admin');
+        return redirect('admin/bai-viet');
     }
 
     /**

@@ -6,7 +6,7 @@
             <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-            <p>dinhvanvu94</p>
+            <p>{{Auth::user()->name}}</p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
     </div>
@@ -47,10 +47,24 @@
             <ul class="treeview-menu">
                 <li><a href="admin/bai-viet"><i class="fa fa-circle-o"></i>Danh sách bài viết</a></li>
                 <li><a href="admin/them-bai-viet"><i class="fa fa-circle-o"></i>Thêm bài viết</a></li>
+                <li><a href="admin/them-bai-viet"><i class="fa fa-circle-o"></i>Thêm danh mục</a></li>
             </ul>
         </li>
         
-        
+        <li>
+            <a href="#">
+                <i class="fa fa-book"></i>
+                <span>Trang</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="admin/danh-muc"><i class="fa fa-circle-o"></i>Danh sách trang</a></li>
+                <li><a href="admin/them-danh-muc"><i class="fa fa-circle-o"></i>Tạo trang</a></li>
+            </ul>
+        </li>
+
         <li>
             <a href="#">
                 <i class="fa fa-book"></i>
@@ -62,6 +76,48 @@
             <ul class="treeview-menu">
                 <li><a href="admin/danh-muc"><i class="fa fa-circle-o"></i>Danh sách danh mục</a></li>
                 <li><a href="admin/them-danh-muc"><i class="fa fa-circle-o"></i>Thêm danh mục</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa fa-book"></i>
+                <span>Plugins</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="admin/danh-muc"><i class="fa fa-circle-o"></i>Danh sách plugin</a></li>
+                <li><a href="admin/them-danh-muc"><i class="fa fa-circle-o"></i>Thêm plugin mới</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-book"></i>
+                <span>Theme</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="admin/danh-muc"><i class="fa fa-circle-o"></i>Danh sách theme</a></li>
+                <li><a href="admin/them-danh-muc"><i class="fa fa-circle-o"></i>Thêm theme mới</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-book"></i>
+                <span>Cài đặt</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="admin/danh-muc"><i class="fa fa-circle-o"></i>Cài đặt chung</a></li>
+                <li><a href="admin/them-danh-muc"><i class="fa fa-circle-o"></i>Đường dẫn</a></li>
+                <li><a href="admin/them-danh-muc"><i class="fa fa-circle-o"></i>Thư viện ảnh</a></li>
+                <li><a href="admin/them-danh-muc"><i class="fa fa-circle-o"></i>Đường dẫn</a></li>
             </ul>
         </li>
     </ul>

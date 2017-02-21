@@ -38,20 +38,26 @@
                       <table class="table table-hover">
                           <tbody>
                               <tr>
+                                  <th>
+                                    <input data-check="all" type="checkbox" name="remember">
+                                  </th>
                                   <th>ID</th>
                                   <th>Tiêu đề</th>
-                                  <th>Ảnh</th>
-                                  <th>Tóm tắt</th>
-                                  <th>Ẩn hiện</th>
+                                  <th>Categories</th>
+                                  <th>Tags</th>
+                                  <th>Ngày tạo</th>
                                   <th>Thao tác</th>
                               </tr>
                               @foreach($articles as $article)
                                 <tr>
+                                  <th>
+                                     <input data-check="{{$article->id}}" type="checkbox" name="remember">
+                                  </th>
                                   <td>{{$article->id}}</td>
                                   <td>{{$article->title}}</td>
                                   <td></td>
-                                  <td>{{$article->description}}</td>
                                   <td></td>
+                                  <td>{{$article->created_at->format('d/m/Y')}}</td>
                                   <td>
                                     <a href="#"><i class="fa fa-2x fa-edit "></i></a>
                                     <a href="#"><i class="fa fa-2x fa-remove "></i></a>
@@ -77,9 +83,11 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
 @endsection
 
 @section('script')
+<link rel="stylesheet" href="plugins/iCheck/square/blue.css">
 <!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -90,17 +98,15 @@
 <script src="dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-<!-- CK Editor -->
-<script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!-- iCheck -->
+<script src="plugins/iCheck/icheck.min.js"></script>
 <script>
   $(function () {
-    // Replace the <textarea id="editor1"> with a CKEditor
-    // instance, using default configuration.
-    CKEDITOR.replace('editor1');
-    //bootstrap WYSIHTML5 - text editor
-    $(".textarea").wysihtml5();
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
+    });
   });
 </script>
 @endsection
