@@ -18,61 +18,82 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
             <!-- Content Article -->
-            <div class="col-md-9 col-sm-12 col-xs-12">
-              <form method="POST" action="{{ url('admin/articles') }}">
-                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                <input type="hidden" name="author"  value="{{Auth::user()->name}}">
-                <div class="box box-info">
-                 
-                  <div class="box-header">
-                    <div class="box-body">
-                      <input name="title" class="form-control input-lg" type="text" placeholder="Tiêu đề bài viết">
+            <form method="POST" action="{{ url('admin/articles') }}">
+              <div class="col-md-9 col-sm-12 col-xs-12">
+                
+                  <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                  <input type="hidden" name="author"  value="{{Auth::user()->name}}">
+                  <div class="box box-info">
+                   
+                    <div class="box-header">
+                      <div class="box-body">
+                        <input name="title" class="form-control input-lg" type="text" placeholder="Tiêu đề bài viết">
+                      </div>
                     </div>
-                  </div>
-                  <!-- /.box-header -->
-                  <div class="box-body pad">
-                    <div class="form-group">
-                      <textarea name="description" class="form-control" rows="3" placeholder="Mô tả"></textarea>
-                    </div>
-                    
-                    <textarea name="content" id="editor1" name="editor1" rows="10" cols="80">
-                            
-                    </textarea>
-                    
-                    <!-- Keyword Input -->
+                    <!-- /.box-header -->
+                    <div class="box-body pad">
+                      <div class="form-group">
+                        <textarea name="description" class="form-control" rows="3" placeholder="Mô tả"></textarea>
+                      </div>
+                      
+                      <textarea name="content" id="editor1" name="editor1" rows="10" cols="80">
+                              
+                      </textarea>
+                      
+                      <!-- Keyword Input -->
 
-                    <br>
-                    <div class="form-group">
-                      <div class="input-group-btn">
-                        <button type="button" class="btn btn-info btn-flat">Description</button>
+                      <br>
+                      <div class="form-group">
+                        <div class="input-group-btn">
+                          <button type="button" class="btn btn-info btn-flat">Description</button>
+                        </div>
+                        <textarea name="meta_description" class="form-control" rows="3" placeholder="Description."></textarea>
                       </div>
-                      <textarea name="meta_description" class="form-control" rows="3" placeholder="Description."></textarea>
+                      <div class="input-group">
+                        <div class="input-group-btn">
+                          <button type="button" class="btn btn-info btn-flat">Keyword</button>
+                        </div>
+                        <!-- /btn-group -->
+                        <input name="meta_keyword" type="text" class="form-control">
+                      </div>
+                      <br>
+                      <div class="input-group">
+                        <div class="input-group-btn">
+                          <button type="button" class="btn btn-info btn-flat">Tags</button>
+                        </div>
+                        <!-- /btn-group -->
+                        <input type="text" class="form-control">
+                      </div>
                     </div>
-                    <div class="input-group">
-                      <div class="input-group-btn">
-                        <button type="button" class="btn btn-info btn-flat">Keyword</button>
-                      </div>
-                      <!-- /btn-group -->
-                      <input name="meta_keyword" type="text" class="form-control">
-                    </div>
-                    <br>
-                    <div class="input-group">
-                      <div class="input-group-btn">
-                        <button type="button" class="btn btn-info btn-flat">Tags</button>
-                      </div>
-                      <!-- /btn-group -->
-                      <input type="text" class="form-control">
+                    <div class="box-footer">
+                      <button type="submit" class="btn btn-default">Cancel</button>
+                      <button type="submit" class="btn btn-info pull-right">Thêm bài viết</button>
                     </div>
                   </div>
-                  <div class="box-footer">
-                    <button type="submit" class="btn btn-default">Cancel</button>
-                    <button type="submit" class="btn btn-info pull-right">Thêm bài viết</button>
+               
+                <!-- /.Articles-box -->
+              </div>
+              <!-- .Sidebar Admin-box -->
+              <div class="col-md-3 col-sm-12 col-xs-12">
+                
+                <div class="box box-info">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Danh mục</h3>
+
+                    <div class="box-tools pull-right">
+                      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                      </button>
+                      <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
                   </div>
+                  <div class="box-body">
+                    {!!$html!!}
+                  </div>
+                
                 </div>
-              </form>
-              <!-- /.Articles-box -->
-            </div>
-            
+              </div>
+               <!-- /.Sidebar Admin-box -->
+            </form>
             <!-- right col -->
         </div>
         <!-- /.row (main row) -->
@@ -113,6 +134,7 @@
 @endsection
 
 @section('script')
+<link rel="stylesheet" href="plugins/iCheck/square/blue.css">
 <!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -139,4 +161,23 @@
     })
   });
 </script>
+<script src="plugins/iCheck/icheck.min.js"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
+    });
+  });
+</script>
+<style type="text/css">
+  #listCategorieshmtl {
+    list-style-type: none;
+    padding: 0px;
+  }
+  #sublistCategorieshmtl {
+    list-style-type: none;
+  }
+</style>
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Articles;
+use App\Taxonomy_relationships;
 use Illuminate\Http\Request;
 use App\Http\Requests\CheckArticlesRequest;
 use App\Http\Controllers\Controller;
@@ -53,8 +54,20 @@ class ArticlesController extends Controller
         $articles->meta_description = $dulieu_tu_input["meta_description"];
         $articles->slug = str_slug($dulieu_tu_input["title"]);
         //Tiến hành lưu dữ liệu vào database
-        $articles->save();
- 
+        $result = $articles->save();
+        var_dump($result);
+        if($result)
+        {
+            
+            $categories = $dulieu_tu_input["categories"];
+            var_dump($categories);
+            foreach ($categories as $category_id) {
+                $relationship = new Taxonomy_relationships;
+                $relationship->term_id = $category_id;
+                $relationship->post_id = $articles->id;
+                $relationship->save();
+            }
+        }
         //Sau khi đã lưu xong, tiến hành chuyển hướng tới route articles
                 //hiển thị toàn bộ thông tin bảng articles trong database đã được tạo ở các bài trước
         return redirect('admin/bai-viet');

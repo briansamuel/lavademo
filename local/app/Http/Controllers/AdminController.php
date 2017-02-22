@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Articles;
+use App\Categories;
+use DB;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -26,18 +28,23 @@ class AdminController extends Controller
         return view('admin/content');
     }
 
+
     public function listarticle()
     {
-        $articles = Articles::all();
-        return view('admin/listarticle')->with("articles", $articles);;
+        $articles = Articles::orderBy('created_at', 'desc')->get();
+
+        return view('admin/listarticle')->with("articles", $articles);
     }
 
     public function addarticle()
     {
-        return view('admin/addarticle');
+        $html = Categories::AllCategoriesHTML();
+        return view('admin/addarticle')->with("html", $html);
     }
     public function addcategory()
     {
-        return view('admin/addcategory');
+        $categories = Categories::AllCategories();
+        //var_dump($categories);
+        return view('admin/addcategory')->with("categories", $categories);
     }
 }

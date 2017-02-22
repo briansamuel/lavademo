@@ -43,10 +43,10 @@
                                   </th>
                                   <th>ID</th>
                                   <th>Tiêu đề</th>
+                                  <th>Tác giả</th>
                                   <th>Categories</th>
                                   <th>Tags</th>
                                   <th>Ngày tạo</th>
-                                  <th>Thao tác</th>
                               </tr>
                               @foreach($articles as $article)
                                 <tr>
@@ -55,14 +55,11 @@
                                   </th>
                                   <td>{{$article->id}}</td>
                                   <td>{{$article->title}}</td>
-                                  <td></td>
+                                  <td>{{$article->author}}</td>
+                                  <td>{!!App::make("Categories")->getCategoriesbyID($article->id)!!}</td>
                                   <td></td>
                                   <td>{{$article->created_at->format('d/m/Y')}}</td>
-                                  <td>
-                                    <a href="#"><i class="fa fa-2x fa-edit "></i></a>
-                                    <a href="#"><i class="fa fa-2x fa-remove "></i></a>
-                                    <a href="#"><i class="fa fa-2x fa-eye "></i></a>
-                                  </td>
+                                  
                                 </tr>
                               @endforeach
                               

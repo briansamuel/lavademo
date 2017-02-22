@@ -33,7 +33,10 @@
                     <div class="form-group">
                       <label>Danh mục cha</label>
                       <select name="parent" class="form-control select2" style="width: 100%;">
-                        <option selected="selected" value="0"></option>
+                        <option selected="selected" value="0">Chọn Category</option>
+                        @foreach($categories as $categorie)
+                        <option value="{{$categorie->id}}">{{$categorie->name}}</option>
+                        @endforeach
                       </select>
                     </div>
                     <br>
