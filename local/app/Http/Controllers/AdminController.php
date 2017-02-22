@@ -31,9 +31,25 @@ class AdminController extends Controller
 
     public function listarticle()
     {
+        $html = '';
         $articles = Articles::orderBy('created_at', 'desc')->get();
-
-        return view('admin/listarticle')->with("articles", $articles);
+        foreach ($articles as $article) {
+            $categoriesHTML = Categories::getCategoriesbyID($article->id);
+            $html .= '<tr>
+                <th>
+                <input data-check="'.$article->id.'" type="checkbox" name="remember">
+                </th>
+                <td>'.$article->id.'</td>
+                <td>'.$article->title.'</td>
+                <td>'.$article->author.'</td>
+                <td>'.$categoriesHTML .'</td>
+                <td></td>
+                <td>'.$article->created_at->format('d/m/Y').'</td>
+                                  
+             </tr>';
+              
+        }
+        return view('admin/listarticle')->with("articleshtml", $html);
     }
 
     public function addarticle()

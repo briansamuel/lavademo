@@ -55,8 +55,8 @@ class Categories extends Model
         $html = '';
         $categoriesbyID = DB::table('term_taxonomy')
             ->join('taxonomy_relationships', 'term_taxonomy.id', '=', 'taxonomy_relationships.term_id')
-            ->where('term_taxonomy.taxonomy_relationships', $id)->where('term_taxonomy.taxonomy', 'category')->get();
-        foreach ($categoriesbyIDas as $categorybyID) {
+            ->where('taxonomy_relationships.post_id', $id)->where('term_taxonomy.taxonomy', 'category')->get();
+        foreach ($categoriesbyID as $categorybyID) {
             $html .= '<a href="#">'.$categorybyID->name.'</a> ';
         }
         return $html;

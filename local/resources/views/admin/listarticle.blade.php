@@ -35,8 +35,8 @@
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body table-responsive no-padding">
-                      <table class="table table-hover">
-                          <tbody>
+                      <table id="dataTable" class="table table-hover">
+                           <thead>
                               <tr>
                                   <th>
                                     <input data-check="all" type="checkbox" name="remember">
@@ -48,23 +48,10 @@
                                   <th>Tags</th>
                                   <th>Ngày tạo</th>
                               </tr>
-                              @foreach($articles as $article)
-                                <tr>
-                                  <th>
-                                     <input data-check="{{$article->id}}" type="checkbox" name="remember">
-                                  </th>
-                                  <td>{{$article->id}}</td>
-                                  <td>{{$article->title}}</td>
-                                  <td>{{$article->author}}</td>
-                                  <td>{!!App::make("Categories")->getCategoriesbyID($article->id)!!}</td>
-                                  <td></td>
-                                  <td>{{$article->created_at->format('d/m/Y')}}</td>
-                                  
-                                </tr>
-                              @endforeach
-                              
-                              
-                          </tbody>
+                            </thead>
+                            <tbody>
+                              {!!$articleshtml!!}
+                            </tbody>
                       </table>
                   </div>
                   <!-- /.box-body -->
@@ -84,6 +71,7 @@
 @endsection
 
 @section('script')
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
 <!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -97,12 +85,22 @@
 <script src="dist/js/demo.js"></script>
 <!-- iCheck -->
 <script src="plugins/iCheck/icheck.min.js"></script>
+<!-- DataTable -->
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script>
   $(function () {
     $('input').iCheck({
       checkboxClass: 'icheckbox_square-blue',
       radioClass: 'iradio_square-blue',
       increaseArea: '20%' // optional
+    });
+    var dataTable = $('#dataTable').DataTable(
+    {
+        "paging": true, // Allow data to be paged
+        "lengthChange": false,
+        "searching": true, // Search box and search function will be actived
+        "pageLength": 5,    // 5 rows per page
+
     });
   });
 </script>
