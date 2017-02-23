@@ -18,17 +18,15 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
             <!-- Content Article -->
-            <div class="col-md-9 col-sm-12 col-xs-12">
+            <div class="col-md-4 col-sm-12 col-xs-12">
               <form method="POST" action="{{ url('admin/categories') }}">
                 <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                 <div class="box box-info">
-                  <div class="box-header">
-                    <div class="box-body">
-                      <input name="name" class="form-control input-lg" type="text" placeholder="Tên danh mục">
-                    </div>
-                  </div>
+
                   <!-- /.box-header -->
                   <div class="box-body pad">
+                    <input name="name" class="form-control" type="text" placeholder="Tên danh mục">
+                    <br>
                     <!-- Keyword Input -->
                     <div class="form-group">
                       <label>Danh mục cha</label>
@@ -72,6 +70,35 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+@if ( $errors->any() )
+<div class="example-modal">
+    <div class="modal modal-danger" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Thông báo lỗi</h4>
+                </div>
+                <div class="modal-body">
+                     
+                        <ul>
+                          @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                          @endforeach
+                        </ul> 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Tắt</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+</div>
+@endif
 @endsection
 
 @section('script')
@@ -93,9 +120,10 @@
   $(function () {
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
-    CKEDITOR.replace('editor1');
+    //CKEDITOR.replace('editor1');
     //bootstrap WYSIHTML5 - text editor
-    $(".textarea").wysihtml5();
+    //$(".textarea").wysihtml5();
+    $('#myModal').modal();
   });
 </script>
 @endsection

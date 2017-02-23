@@ -156,9 +156,7 @@
     CKEDITOR.replace('editor1');
     //bootstrap WYSIHTML5 - text editor
     $(".textarea").wysihtml5();
-    $('#myModal').modal({
-     
-    })
+    $('#myModal').modal();
   });
 </script>
 <script src="plugins/iCheck/icheck.min.js"></script>

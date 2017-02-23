@@ -25,7 +25,7 @@ class CheckArticlesRequest extends FormRequest
     {
         return [
                 //thiết lập các rule cho form
-              'title' => 'required|min:6|unique:articles', // field name bắt buộc nhập và phải có tổi thiểu 6 ký tự
+              'title' => 'required|min:6|unique:articles.title', // field name bắt buộc nhập và phải có tổi thiểu 6 ký tự
               'content' => 'required|min:200', // field author bắt buộc nhập
               'description' => 'required|min:20',
               ];

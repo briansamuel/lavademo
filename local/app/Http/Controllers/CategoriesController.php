@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Http\Requests\CheckCategoriesRequest;
 use App\Categories;
 class CategoriesController extends Controller
 {
@@ -20,7 +21,7 @@ class CategoriesController extends Controller
     {
         return view('home');
     }
-    public function addcategory(Request $request)
+    public function addcategory(CheckCategoriesRequest $request)
     {
         $dulieu_tu_input = $request->all();
  
@@ -45,6 +46,6 @@ class CategoriesController extends Controller
     public function getCategoriesbyID($id)
     {
         $categories = new Categories;
-        return $categories->getCategoriesbyID($id)
+        return $categories->getCategoriesbyID($id);
     }
 }
